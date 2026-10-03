@@ -1,0 +1,160 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid rgba(245, 241, 224, 0.2);
+  background-image:
+    linear-gradient(90deg, rgba(3, 13, 7, 0.9), rgba(3, 13, 7, 0.55)),
+    url("/images/season7-forest-logo.webp");
+  background-position: center 42%;
+  background-size: cover;
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.12);
+  transition: background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.headerScrolled {
+  background-image:
+    linear-gradient(90deg, rgba(3, 13, 7, 0.96), rgba(3, 13, 7, 0.82)),
+    url("/images/season7-forest-logo.webp");
+}
+
+.inner {
+  display: flex;
+  min-height: 5.7rem;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  transition: min-height 220ms ease;
+}
+
+.headerScrolled .inner {
+  min-height: 4.7rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-cream);
+  text-decoration: none;
+}
+
+.logoImg {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid rgba(245, 241, 224, 0.35);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+.logoText span {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  letter-spacing: 0.02em;
+}
+
+.logoText small {
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+}
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: clamp(1.2rem, 3vw, 2.8rem);
+}
+
+.link,
+.mobileLink {
+  color: rgba(245, 241, 224, 0.78);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.link:hover,
+.mobileLink:hover {
+  color: var(--color-gold);
+}
+
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  padding: 0.5rem 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 1.75rem;
+  height: 1px;
+  background: var(--color-cream);
+  transition: transform 180ms ease;
+}
+
+.barOpenTop {
+  transform: translateY(0.23rem) rotate(45deg);
+}
+
+.barOpenBottom {
+  transform: translateY(-0.23rem) rotate(-45deg);
+}
+
+.mobileMenu {
+  padding: 0.5rem 1.5rem 1.5rem;
+  border-top: 1px solid rgba(245, 241, 224, 0.16);
+}
+
+.mobileNav {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    min-height: 6.3rem;
+    padding: 0 3.5rem;
+  }
+
+  .headerScrolled .inner {
+    min-height: 5rem;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .menuBtn,
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .inner {
+    padding: 0 1rem;
+  }
+
+  .logoText small {
+    font-size: 0.48rem;
+  }
+}
