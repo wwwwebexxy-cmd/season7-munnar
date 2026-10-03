@@ -21,7 +21,7 @@ const amenities = [
     number: "03",
     title: "Spa & Wellness",
     body: "Slow down with restorative treatments, quiet corners and the kind of calm that stays with you after checkout.",
-    image: "/images/season7-wellness.png",
+    image: "/images/season7-spa-modest.png",
   },
   {
     number: "04",
@@ -35,26 +35,32 @@ const amenities = [
     body: "Discover forest paths, tea-country views and the quieter side of Munnar with a local guide beside you.",
     image: "/images/season7-nature-walk.png",
   },
+  {
+    number: "06",
+    title: "Campfire Nights",
+    body: "Create unforgettable memories with friends and family around a warm campfire. Share stories and soak in the charm of Munnar's cool evenings.",
+    image: "/images/season7-campfire.png",
+  },
 ];
 
 const highlights = [
   {
-    number: "01",
+    // number: "01",
     title: "Wake up to the hills",
     body: "Open the curtains to mist, mountain air and a slower rhythm. Season7 is a comfortable base for days that feel spacious.",
-    image: "/images/season7-luxury-room.png",
+    image: "/images/season7-highlight-hills.png",
   },
   {
-    number: "02",
+    // number: "02",
     title: "Taste the place",
     body: "From a generous breakfast to an evening meal with a view, our table brings together local character and easy comfort.",
-    image: "/images/season7-dining.png",
+    image: "/images/season7-highlight-taste.png",
   },
   {
-    number: "03",
+    // number: "03",
     title: "Go gently wild",
     body: "Take a guided walk, find a waterfall, or simply sit with the landscape. Adventure is close, never compulsory.",
-    image: "/images/season7-nature-walk.png",
+    image: "/images/season7-highlight-wild.png",
   },
 ];
 
@@ -134,7 +140,6 @@ export default function ResortExperience() {
                     <a key={panel.label} href={panel.href} className={styles.galleryPanel}>
                       <Image src={`/images/${panel.image}`} alt="" fill priority={index < 2}
                         sizes="(max-width: 640px) 50vw, (max-width: 1023px) 40vw, 30vw" />
-                      <span className={styles.panelNumber}>0{index + 1}</span>
                       <span className={styles.panelLabel}>{panel.label}</span>
                     </a>
                   ))}
@@ -144,23 +149,29 @@ export default function ResortExperience() {
             </div>
           </Container>
         </div>
-
-        <a href="#about" className={styles.scrollCue}>Scroll to discover</a>
       </section>
-
       <section id="about" className={styles.aboutSection}>
         <Container>
           <div className={styles.aboutGrid}>
             <Reveal>
-              <div className={styles.aboutVisual}>
-                <Image
-                  src="/images/season7-luxury-room.png"
-                  alt="Comfortable Season7 guest room with a view of Munnar hills"
-                  fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                  className={styles.sectionImage}
-                />
-                <span className={styles.imageStamp}>01 / Stay close</span>
+              <div style={{ position: "relative" }}>
+                <div className={styles.aboutVisual}>
+                  <Image
+                    src="/images/season7-luxury-room.png"
+                    alt="Comfortable Season7 guest room with a view of Munnar hills"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                    className={styles.sectionImage}
+                  />
+                </div>
+                <div className={styles.overlappingImageWrapper}>
+                  <Image
+                    src="/images/munnar_tea_balcony.png"
+                    alt="Munnar tea balcony"
+                    fill
+                    className={styles.overlappingImage}
+                  />
+                </div>
               </div>
             </Reveal>
 
@@ -215,11 +226,9 @@ export default function ResortExperience() {
                     <div className={styles.imageOverlay} />
                   </div>
                   <div className={styles.cardHeader}>
-                    <span>{amenity.number}</span>
                     <h3>{amenity.title}</h3>
                   </div>
                   <div className={styles.cardReveal}>
-                    <span className={styles.cardNumber}>{amenity.number}</span>
                     <h3>{amenity.title}</h3>
                     <p>{amenity.body}</p>
                   </div>
@@ -246,7 +255,7 @@ export default function ResortExperience() {
 
           <div className={styles.highlightGrid}>
             {highlights.map((highlight, index) => (
-              <Reveal key={highlight.number} delay={index * 120}>
+              <Reveal key={highlight.title} delay={index * 120}>
                 <article className={styles.highlightCard}>
                   <div className={styles.highlightImageWrapper}>
                     <Image

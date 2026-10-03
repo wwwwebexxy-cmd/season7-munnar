@@ -15,8 +15,11 @@
 
 .sectionImage,
 .cardImage,
-.highlightImage {
+.highlightImage,
+.galleryPanel img,
+.overlappingImage {
   object-fit: cover;
+  filter: brightness(92%);
 }
 
 .gridBackdrop,
@@ -739,3 +742,29 @@
   .cardReveal { transform: none; background: linear-gradient(0deg, rgba(7, 29, 16, .96), rgba(7, 29, 16, .08)); }
   .cardHeader { visibility: hidden; }
 }
+
+.overlappingImageWrapper {
+  position: absolute;
+  bottom: -3rem;
+  right: -2rem;
+  width: 14rem;
+  height: 14rem;
+  z-index: 10;
+  border: 6px solid var(--color-cream);
+  background: var(--color-pine);
+}
+
+.overlappingImage {
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .overlappingImageWrapper {
+    width: 10rem;
+    height: 10rem;
+    bottom: -2rem;
+    right: -1rem;
+    border-width: 4px;
+  }
+}
+

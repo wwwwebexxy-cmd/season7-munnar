@@ -1,6 +1,6 @@
 .footer {
   padding: 3.5rem 0 2rem;
-  background: var(--color-forest);
+  background: linear-gradient(90deg, rgba(2, 12, 5, 0.22), rgba(2, 12, 5, 0.58)), url('/images/season7-navbar-foliage.webp') center 48% / cover, var(--color-forest);
   color: var(--color-cream);
 }
 
@@ -26,11 +26,9 @@
 }
 
 .brand img {
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid rgba(245, 241, 224, 0.3);
-  border-radius: 50%;
-  object-fit: cover;
+  width: auto;
+  height: 3.5rem;
+  object-fit: contain;
 }
 
 .footerNav {

@@ -3,6 +3,8 @@ import { Fraunces, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import Preloader from "@/components/ui/Preloader";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -64,6 +66,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  other: {
+    "geo.region": "IN-KL",
+    "geo.placename": "Munnar",
+    "geo.position": "10.0210;77.0371",
+    "ICBM": "10.0210, 77.0371",
+  }
 };
 
 export default function RootLayout({
@@ -87,6 +95,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${plexMono.variable}`}>
       <body>
+        <Preloader />
+        <WhatsAppFloat />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
