@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useInView<T extends HTMLElement = HTMLDivElement>(
-  options: IntersectionObserverInit = { threshold: 0.15 }
+  { threshold = 0, root = null, rootMargin = "0px 0px -32px 0px" }: IntersectionObserverInit = {}
 ) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -15,11 +15,11 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
         setInView(true);
         observer.unobserve(element); // Animate only once
       }
-    }, options);
+    }, { threshold, root, rootMargin });
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, [options]);
+  }, [threshold, root, rootMargin]);
 
   return { ref, inView };
 }

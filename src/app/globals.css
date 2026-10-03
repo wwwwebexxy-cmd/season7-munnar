@@ -19,7 +19,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  scroll-padding-top: 7.5rem;
 }
 
 body {
@@ -30,7 +30,7 @@ body {
   font-feature-settings: "ss01" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 a,
@@ -72,12 +72,11 @@ button {
 }
 
 .reveal {
-  opacity: 0;
-  will-change: transform, opacity;
+  opacity: 1;
 }
 
 .reveal.is-visible {
-  animation: fade-in-up 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,6 +84,7 @@ button {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
@@ -92,5 +92,6 @@ button {
 
   .reveal {
     opacity: 1;
+    transform: none;
   }
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Fraunces, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
-import Loader from "@/components/ui/Loader";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
 const fraunces = Fraunces({
@@ -86,13 +85,12 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <body className={`${fraunces.variable} ${manrope.variable} ${plexMono.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${plexMono.variable}`}>
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Loader />
         {children}
         <ScrollToTop />
       </body>

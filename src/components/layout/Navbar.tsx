@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { navLinks, site } from "@/data/site";
 import styles from "./Navbar.module.css";
@@ -8,25 +8,44 @@ import styles from "./Navbar.module.css";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    const desktop = window.matchMedia("(min-width: 980px)");
+    const onResize = () => { if (desktop.matches) setOpen(false); };
+    document.addEventListener("keydown", close);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      document.removeEventListener("keydown", close);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
   return (
-    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""} ${open ? styles.headerOpen : ""}`}>
         <div className={styles.inner}>
-          <a href="#home" className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
-            <Image src="/images/season7-forest-logo.webp" alt="Season7 Natural Resort Munnar" className={styles.logoImg} width={48} height={48} priority />
+          <a href="#home" onClick={() => setOpen(false)} className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
+            <Image src="/images/season7-forest-logo.webp" alt="" className={styles.logoImg} width={80} height={63} priority />
             <div className={styles.logoText}>
               <span>{site.name}</span>
               <small>AMRUTHA RESORT</small>
             </div>
           </a>
 
-          <nav className={styles.nav}>
+          <nav className={styles.nav} aria-label="Main navigation">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -40,7 +59,10 @@ export default function Navbar() {
 
 
           <button
-            aria-label="Toggle menu"
+            ref={menuButton}
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-controls="mobile-navigation"
             aria-expanded={open}
             onClick={() => setOpen(!open)}
             className={styles.menuBtn}
@@ -50,9 +72,8 @@ export default function Navbar() {
           </button>
         </div>
 
-        {open && (
-          <div className={styles.mobileMenu}>
-            <div className={styles.mobileNav}>
+          <div id="mobile-navigation" className={styles.mobileMenu} inert={!open} aria-hidden={!open}>
+            <nav className={styles.mobileNav} aria-label="Mobile navigation">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -64,9 +85,8 @@ export default function Navbar() {
                 </a>
               ))}
 
-            </div>
+            </nav>
           </div>
-        )}
     </header>
   );
 }

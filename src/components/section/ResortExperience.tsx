@@ -80,14 +80,6 @@ export default function ResortExperience() {
   return (
     <main>
       <section id="home" className={styles.hero}>
-        <Image
-          src="/images/season7-munnar-hero.png"
-          alt="Season7 Natural Resort among the misty green hills of Munnar"
-          fill
-          priority
-          sizes="100vw"
-          className={styles.heroImage}
-        />
         <div className={styles.gridBackdrop} />
         <div className={styles.gradientBackdrop} />
 
@@ -95,26 +87,26 @@ export default function ResortExperience() {
           <Container>
             <div className={styles.heroGrid}>
               <div className={styles.textContent}>
-                <Reveal delay={180}>
+                <Reveal>
                   <div className={styles.heroEyebrow}>
                     <span className={styles.eyebrowLine} />
                     SEASON7 NATURAL RESORT · MUNNAR
                   </div>
                 </Reveal>
 
-                <Reveal delay={360}>
+                <Reveal delay={100}>
                   <h1 className={styles.heroTitle}>
                     A stay that feels like <em>coming home.</em>
                   </h1>
                 </Reveal>
 
-                <Reveal delay={540}>
+                <Reveal delay={160}>
                   <h2 className={styles.heroSubheading}>
                     NATURE · HOSPITALITY · QUIET LUXURY
                   </h2>
                 </Reveal>
 
-                <Reveal delay={720}>
+                <Reveal delay={220}>
                   <div className={styles.heroDescription}>
                     <p>Come closer to the green hills of Munnar.</p>
                     <p>
@@ -123,7 +115,7 @@ export default function ResortExperience() {
                   </div>
                 </Reveal>
 
-                <Reveal delay={900}>
+                <Reveal delay={280}>
                   <div className={styles.heroActions}>
                     <a href="#services" className={styles.primaryButton}>Explore the resort</a>
                     <a href="#contact" className={styles.outlineButton}>Plan your stay</a>
@@ -131,12 +123,23 @@ export default function ResortExperience() {
                 </Reveal>
               </div>
 
-              <Reveal delay={1080} className={styles.heroAside}>
-                <div className={styles.heroAsideCard}>
-                  <LeafMark />
-                  <span>Stay gently.</span>
-                  <strong>Explore freely.</strong>
+              <Reveal delay={180} className={styles.heroGallery}>
+                <div className={styles.galleryPanels} aria-label="Explore the resort">
+                  {[
+                    { image: "season7-munnar-hero.png", label: "The retreat", href: "#about" },
+                    { image: "season7-luxury-room.png", label: "Stay", href: "#services" },
+                    { image: "season7-dining.png", label: "Dine", href: "#services" },
+                    { image: "season7-nature-walk.png", label: "Discover", href: "#experiences" },
+                  ].map((panel, index) => (
+                    <a key={panel.label} href={panel.href} className={styles.galleryPanel}>
+                      <Image src={`/images/${panel.image}`} alt="" fill priority={index < 2}
+                        sizes="(max-width: 640px) 50vw, (max-width: 1023px) 40vw, 30vw" />
+                      <span className={styles.panelNumber}>0{index + 1}</span>
+                      <span className={styles.panelLabel}>{panel.label}</span>
+                    </a>
+                  ))}
                 </div>
+                <p className={styles.galleryCaption}>Stay gently. Explore freely.</p>
               </Reveal>
             </div>
           </Container>
@@ -200,7 +203,7 @@ export default function ResortExperience() {
           <div className={styles.serviceGrid}>
             {amenities.map((amenity, index) => (
               <Reveal key={amenity.number} delay={(index % 3) * 100}>
-                <article className={styles.serviceCard}>
+                <article className={styles.serviceCard} tabIndex={0}>
                   <div className={styles.cardImageWrapper}>
                     <Image
                       src={amenity.image}
@@ -295,6 +298,7 @@ export default function ResortExperience() {
             </Reveal>
           </div>
 
+          <div className={styles.contactLayout}>
           <div className={styles.contactGrid}>
             <Reveal>
               <div className={styles.contactCard}>
@@ -318,13 +322,21 @@ export default function ResortExperience() {
             </Reveal>
           </div>
 
-          <div className={styles.mapPanel}>
-            <PinIcon />
-            <div>
-              <span className={styles.cardLabel}>FIND YOUR WAY HERE</span>
-              <strong>Chithirapuram · Anachal · Munnar</strong>
+          <Reveal delay={180} className={styles.mapColumn}>
+            <div className={styles.mapPanel}>
+              <PinIcon />
+              <div>
+                <span className={styles.cardLabel}>VISIT THE RESORT</span>
+                <strong>Find your quiet corner.</strong>
+              </div>
+              <a href={site.mapsLink} target="_blank" rel="noreferrer" className={styles.mapLink}>Open in Maps</a>
             </div>
-            <a href={site.mapsLink} target="_blank" rel="noreferrer" className={styles.mapLink}>View on maps</a>
+            <div className={styles.mapFrame}>
+              <iframe src={site.mapsEmbed} title="Season7 The Nature Resort location in Munnar"
+                loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+            </div>
+            <p className={styles.mapNote}>Season7 The Nature Resort · Chithirapuram, Munnar</p>
+          </Reveal>
           </div>
         </Container>
       </section>

@@ -8,21 +8,15 @@
 }
 
 .hero {
-  min-height: 100svh;
+  min-height: min(100svh, 70rem);
   display: flex;
   align-items: center;
 }
 
-.heroImage,
 .sectionImage,
 .cardImage,
 .highlightImage {
   object-fit: cover;
-}
-
-.heroImage {
-  z-index: -3;
-  object-position: center;
 }
 
 .gridBackdrop,
@@ -45,13 +39,13 @@
 .gradientBackdrop {
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3, 13, 7, 0.94) 0%, rgba(3, 13, 7, 0.76) 42%, rgba(3, 13, 7, 0.26) 100%),
-    linear-gradient(0deg, rgba(3, 13, 7, 0.8) 0%, transparent 58%);
+    radial-gradient(ellipse at 78% 45%, rgba(111, 132, 81, 0.19), transparent 65%),
+    linear-gradient(0deg, var(--color-forest), transparent 40%);
 }
 
 .heroContent {
   width: 100%;
-  padding: 10.5rem 0 7rem;
+  padding: clamp(9rem, 12vw, 12rem) 0 clamp(4rem, 7vw, 7rem);
 }
 
 .heroGrid,
@@ -64,9 +58,9 @@
 }
 
 .heroGrid {
-  min-height: calc(100svh - 9rem);
-  grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 0.65fr);
-  align-items: end;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
 }
 
 .textContent {
@@ -79,7 +73,6 @@
 .cardLabel,
 .imageStamp,
 .scrollCue,
-.heroAsideCard,
 .mapLink {
   font-family: var(--font-mono);
   font-size: 0.73rem;
@@ -101,6 +94,7 @@
 }
 
 .eyebrowLine {
+  flex-shrink: 0;
   width: 2.8rem;
   height: 1px;
   background: var(--color-gold);
@@ -118,8 +112,8 @@
 .heroTitle {
   max-width: 51rem;
   margin: 1.4rem 0 0;
-  font-size: clamp(4rem, 8.2vw, 8.2rem);
-  line-height: 0.88;
+  font-size: clamp(3.3rem, 5.1vw, 5.5rem);
+  line-height: 1.02;
 }
 
 .heroTitle em {
@@ -205,37 +199,39 @@
   transform: translateY(-2px);
 }
 
-.heroAside {
-  display: flex;
-  justify-content: flex-end;
+.heroGallery { min-width: 0; }
+.galleryPanels {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  aspect-ratio: 1.12;
+  transition: grid-template-columns 650ms cubic-bezier(.22, 1, .36, 1);
 }
-
-.heroAsideCard {
-  display: flex;
-  width: 12rem;
-  min-height: 12rem;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.45rem;
-  padding: 1.4rem;
-  border: 1px solid rgba(196, 165, 90, 0.5);
-  background: rgba(7, 29, 16, 0.36);
-  color: rgba(245, 241, 224, 0.7);
-  backdrop-filter: blur(6px);
-}
-
-.heroAsideCard .leafMark {
-  width: 3rem;
-  margin-bottom: auto;
-}
-
-.heroAsideCard strong {
+.galleryPanel {
+  position: relative;
+  grid-row: 1;
+  min-width: 0;
+  overflow: hidden;
+  border: 3px solid var(--color-cream);
   color: var(--color-cream);
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  text-transform: none;
+  background: var(--color-pine);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+}
+.galleryPanel:nth-child(1) { grid-column: 1 / span 3; }
+.galleryPanel:nth-child(2) { grid-column: 3 / span 3; }
+.galleryPanel:nth-child(3) { grid-column: 5 / span 3; }
+.galleryPanel:nth-child(4) { grid-column: 7 / span 3; }
+.galleryPanel img { object-fit: cover; transition: transform 800ms ease; }
+.galleryPanel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 10, 3, .8), transparent 55%); }
+.panelNumber, .panelLabel { position: absolute; z-index: 1; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.panelNumber { top: 1rem; left: .8rem; text-shadow: 0 1px 6px black; }
+.panelLabel { left: .8rem; bottom: 2.5rem; writing-mode: vertical-rl; transform: rotate(180deg); }
+.galleryCaption { color: var(--color-sage); font-family: var(--font-mono); text-transform: uppercase; font-size: .75rem; letter-spacing: .16em; margin: 1.25rem 0 0; text-align: right; }
+.galleryPanel:focus-visible { outline-offset: -7px; outline-width: 3px; }
+@media (hover: hover) and (min-width: 641px) {
+  .galleryPanels:has(> a:nth-child(1):is(:hover, :focus-visible)) { grid-template-columns: 5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; }
+  .galleryPanels:has(> a:nth-child(2):is(:hover, :focus-visible)) { grid-template-columns: 1fr 1fr 1fr 5fr 1fr 1fr 1fr 1fr 1fr; }
+  .galleryPanels:has(> a:nth-child(3):is(:hover, :focus-visible)) { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr 1fr 1fr 1fr; }
+  .galleryPanels:has(> a:nth-child(4):is(:hover, :focus-visible)) { grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 5fr 1fr; }
 }
 
 .scrollCue {
@@ -300,7 +296,7 @@
   max-width: 35rem;
   margin: 1rem 0 0;
   font-size: clamp(3rem, 5.5vw, 5.6rem);
-  line-height: 0.92;
+  line-height: 1.02;
 }
 
 .aboutCopy > p,
@@ -521,6 +517,8 @@
   background: var(--color-gold);
   color: var(--color-forest);
 }
+.ctaSection .sectionLabel { color: var(--color-forest); }
+.ctaSection .primaryButton { background: var(--color-forest); color: var(--color-cream); }
 
 .ctaInner {
   grid-template-columns: minmax(0, 1.2fr) auto;
@@ -534,15 +532,19 @@
   line-height: 0.94;
 }
 
-.contactGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.contactLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
   margin-top: 4rem;
 }
+.contactGrid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 
 .contactCard {
-  min-height: 12rem;
+  min-height: 0;
   padding: 1.5rem;
-  border-top: 1px solid rgba(7, 29, 16, 0.25);
+  border: 1px solid rgba(7, 29, 16, 0.2);
+  background: var(--color-sand);
 }
 
 .contactCard strong,
@@ -551,7 +553,7 @@
   margin-top: 1.1rem;
   color: var(--color-forest);
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
   font-style: normal;
   font-weight: 400;
   line-height: 1.1;
@@ -567,7 +569,7 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin-top: 3rem;
+  margin-top: 0;
   padding: 1.4rem 1.5rem;
   border: 1px solid rgba(7, 29, 16, 0.22);
   background: var(--color-sand);
@@ -594,6 +596,18 @@
 .mapLink:hover {
   color: var(--color-moss);
 }
+.mapColumn { display: flex; flex-direction: column; min-width: 0; }
+.mapFrame { position: relative; flex: 1; min-height: 28rem; background: var(--color-sand); border: 1px solid rgba(7, 29, 16, .22); border-top: 0; }
+.mapFrame iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; min-height: 28rem; border: 0; }
+.mapNote { margin: .85rem 0 0; font-size: .8rem; color: var(--color-moss); }
+.contactSection .cardLabel, .contactSection .sectionLabel, .aboutSection .sectionLabel, .servicesSection .sectionLabel { color: #72602f; }
+
+@media (max-width: 1023px) {
+  .heroGrid { grid-template-columns: 1fr; }
+  .textContent { max-width: 42rem; }
+  .heroTitle { font-size: clamp(3.3rem, 8vw, 5.5rem); }
+  .galleryPanels { aspect-ratio: 1.65; }
+}
 
 .pinIcon {
   width: 1.6rem;
@@ -617,9 +631,7 @@
     min-height: auto;
   }
 
-  .heroAside {
-    display: none;
-  }
+  .contactLayout { grid-template-columns: minmax(0, 1fr); }
 
   .aboutGrid {
     gap: 3.5rem;
@@ -641,7 +653,7 @@
   }
 
   .heroTitle {
-    font-size: clamp(3.7rem, 18vw, 5.6rem);
+    font-size: clamp(2.9rem, 12.5vw, 4.7rem);
   }
 
   .heroSubheading {
@@ -677,7 +689,7 @@
 
   .sectionTitle,
   .sectionTitleLight {
-    font-size: clamp(3rem, 15vw, 4.8rem);
+    font-size: clamp(2.5rem, 11vw, 4rem);
   }
 
   .serviceGrid,
@@ -712,4 +724,18 @@
     width: 100%;
     margin-left: 2.85rem;
   }
+  .galleryPanels { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; aspect-ratio: 1; }
+  .galleryPanel:nth-child(n) { grid-column: auto; grid-row: auto; }
+  .galleryPanel { border-width: 2px; }
+  .panelLabel { writing-mode: horizontal-tb; transform: none; bottom: 1rem; font-size: .65rem; }
+  .panelNumber { font-size: .65rem; }
+  .galleryCaption { font-size: .65rem; text-align: left; }
+  .mapFrame, .mapFrame iframe { min-height: 22rem; }
+  .heroEyebrow { font-size: .65rem; line-height: 1.7; letter-spacing: .12em; }
+  .heroActions > a { width: 100%; }
+}
+
+@media (hover: none) {
+  .cardReveal { transform: none; background: linear-gradient(0deg, rgba(7, 29, 16, .96), rgba(7, 29, 16, .08)); }
+  .cardHeader { visibility: hidden; }
 }

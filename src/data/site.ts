@@ -10,7 +10,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://season7-the-nature-resort.www-webexxy.chatgpt.site",
   address: "Eatty City Road, Chithirapuram, PO, Anachal, Munnar, Kerala 685565, India",
   mapsLink:
-    "https://www.google.com/maps/search/?api=1&query=Eatty+City+Road,+Chithirapuram,+Anachal,+Munnar,+Kerala+685565,+India",
+    "https://share.google/q5DIH6NS6ARocP5l5",
+  mapsEmbed: "https://maps.google.com/maps?q=Season7+The+Nature+Resort+Chithirapuram+Munnar&z=15&output=embed",
 };
 
 export const navLinks: NavLink[] = [

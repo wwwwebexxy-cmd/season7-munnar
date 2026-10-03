@@ -4,18 +4,17 @@
   right: 1rem;
   left: 1rem;
   z-index: 50;
-  width: min(72rem, calc(100% - 2rem));
+  width: min(92rem, calc(100% - 2rem));
   margin: 0 auto;
   border: 1px solid rgba(196, 165, 90, 0.34);
   border-radius: 2.5rem;
-  background: rgba(7, 29, 16, 0.76);
+  background: linear-gradient(90deg, rgba(2, 12, 5, 0.22), rgba(2, 12, 5, 0.58)), url('/images/season7-navbar-foliage.webp') center 48% / cover, var(--color-forest);
   box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(6px);
-  transition: background 220ms ease, box-shadow 220ms ease;
+  transition: border-radius 300ms ease, box-shadow 220ms ease;
 }
 
 .headerScrolled {
-  background: rgba(7, 29, 16, 0.95);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
 }
 
 .inner {
@@ -23,7 +22,7 @@
   min-height: 5rem;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2.5rem;
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
   transition: min-height 220ms ease;
 }
 
@@ -42,7 +41,7 @@
 
 .logoImg {
   width: auto;
-  height: 2.5rem;
+  height: 3.5rem;
   border-radius: 0;
   object-fit: contain;
 }
@@ -61,11 +60,11 @@
 }
 
 .logoText small {
-  display: none;
+  display: inline-block;
   color: var(--color-gold);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.22em;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
 }
 
 .nav {
@@ -78,8 +77,8 @@
 .mobileLink {
   color: rgba(245, 241, 224, 0.78);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
   text-decoration: none;
   text-transform: uppercase;
   transition: color 180ms ease;
@@ -93,6 +92,11 @@
 .menuBtn {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   gap: 0.38rem;
   padding: 0.5rem 0;
   border: 0;
@@ -117,14 +121,32 @@
 }
 
 .mobileMenu {
-  padding: 1.5rem;
-  border-top: 1px solid rgba(196, 165, 90, 0.28);
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  opacity: 0;
+  transition: grid-template-rows 300ms ease, opacity 220ms ease, visibility 300ms;
 }
 
 .mobileNav {
   display: grid;
-  gap: 1rem;
-  padding-top: 1rem;
+  min-height: 0;
+  overflow: hidden;
+  padding-inline: 1.5rem;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  border-top: 1px solid rgba(196, 165, 90, 0.2);
+}
+.mobileLink:last-child { margin-bottom: 1rem; }
+.headerOpen { border-radius: 2rem; }
+.headerOpen .mobileMenu {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (min-width: 980px) {
@@ -152,6 +174,6 @@
   }
 
   .logoImg {
-    height: 2.2rem;
+    height: 3rem;
   }
 }
