@@ -24,15 +24,15 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SEASON7 THE NATURE RESORT | Munnar",
+  title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
   description:
-    "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
+    "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
   metadataBase: new URL(site.url),
   alternates: {
     canonical: "/",
   },
   keywords: [
-    "Season7 The Nature Resort",
+    "Season7 Natural Resort Munnar",
     "Munnar resort",
     "Munnar cottages",
     "Chithirapuram resort",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "SEASON7 THE NATURE RESORT | Munnar",
+    title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
     description:
-      "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
+      "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
     url: site.url,
     siteName: site.shortName,
     locale: "en_IN",
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SEASON7 THE NATURE RESORT | Munnar",
+    title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
     description:
-      "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
+      "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
   },
   robots: {
     index: true,

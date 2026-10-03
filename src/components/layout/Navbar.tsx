@@ -18,11 +18,11 @@ export default function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""}`}>
         <div className={styles.inner}>
-          <a href="#home" className={styles.logo} aria-label="Season7 The Nature Resort home">
-            <Image src="/images/season7-forest-logo.webp" alt="Season7 The Nature Resort" className={styles.logoImg} width={48} height={48} priority />
+          <a href="#home" className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
+            <Image src="/images/season7-forest-logo.webp" alt="Season7 Natural Resort Munnar" className={styles.logoImg} width={48} height={48} priority />
             <div className={styles.logoText}>
               <span>{site.name}</span>
-              <small>THE NATURE RESORT</small>
+              <small>AMRUTHA RESORT</small>
             </div>
           </a>
 

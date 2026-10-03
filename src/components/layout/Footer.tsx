@@ -9,10 +9,10 @@ export default function Footer() {
       <Container>
         <div className={styles.topRow}>
           <a href="#home" className={styles.brand}>
-            <Image src="/images/season7-forest-logo.webp" alt="Season7 The Nature Resort" width={48} height={48} />
+            <Image src="/images/season7-forest-logo.webp" alt="Season7 Natural Resort Munnar" width={48} height={48} />
             <span>
               <strong>SEASON7</strong>
-              <small>THE NATURE RESORT</small>
+              <small>AMRUTHA RESORT</small>
             </span>
           </a>
 
@@ -26,7 +26,7 @@ export default function Footer() {
         <div className={styles.bottomRow}>
           <p>{site.tagline}</p>
           <p>{site.address}</p>
-          <p>© {new Date().getFullYear()} Season7 The Nature Resort</p>
+          <p>© {new Date().getFullYear()} Season7 Natural Resort Munnar</p>
         </div>
       </Container>
     </footer>

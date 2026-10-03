@@ -1,9 +1,9 @@
 .hero,
-.experienceSection {
+.projectsSection {
   position: relative;
   overflow: hidden;
   color: var(--color-cream);
-  background-color: var(--color-forest);
+  background: var(--color-forest);
   isolation: isolate;
 }
 
@@ -11,70 +11,115 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background-image: url("/images/season7-forest-logo.webp");
-  background-size: cover;
-  background-position: center 42%;
 }
 
-.heroShade,
-.experienceShade {
+.heroImage,
+.sectionImage,
+.cardImage,
+.highlightImage {
+  object-fit: cover;
+}
+
+.heroImage {
+  z-index: -3;
+  object-position: center;
+}
+
+.gridBackdrop,
+.gradientBackdrop {
   position: absolute;
   inset: 0;
+  pointer-events: none;
+}
+
+.gridBackdrop {
+  z-index: -2;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(rgba(245, 241, 224, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 241, 224, 0.2) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(90deg, black, transparent 82%);
+}
+
+.gradientBackdrop {
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3, 13, 7, 0.92) 0%, rgba(3, 13, 7, 0.64) 45%, rgba(3, 13, 7, 0.42) 100%),
-    linear-gradient(0deg, rgba(3, 13, 7, 0.58) 0%, transparent 55%);
+    linear-gradient(90deg, rgba(3, 13, 7, 0.94) 0%, rgba(3, 13, 7, 0.76) 42%, rgba(3, 13, 7, 0.26) 100%),
+    linear-gradient(0deg, rgba(3, 13, 7, 0.8) 0%, transparent 58%);
 }
 
 .heroContent {
   width: 100%;
-  padding: 9rem 0 7rem;
+  padding: 10.5rem 0 7rem;
 }
 
-.heroInner {
-  max-width: 47rem;
+.heroGrid,
+.sectionHeader,
+.aboutGrid,
+.contactGrid,
+.ctaInner {
+  display: grid;
+  gap: 3rem;
 }
 
-.heroKicker,
+.heroGrid {
+  min-height: calc(100svh - 9rem);
+  grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 0.65fr);
+  align-items: end;
+}
+
+.textContent {
+  max-width: 50rem;
+}
+
+.heroEyebrow,
 .sectionLabel,
 .sectionLabelLight,
-.stripLabel,
-.benefitIntro,
-.heroFootnote,
-.scrollCue {
+.cardLabel,
+.imageStamp,
+.scrollCue,
+.heroAsideCard,
+.mapLink {
   font-family: var(--font-mono);
   font-size: 0.73rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
-.heroKicker,
+.heroEyebrow,
 .sectionLabel,
-.stripLabel,
-.benefitIntro {
+.cardLabel,
+.imageStamp {
   color: var(--color-gold);
 }
 
-.heroKicker {
+.heroEyebrow {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.kickerLine {
+.eyebrowLine {
   width: 2.8rem;
   height: 1px;
   background: var(--color-gold);
 }
 
-.heroTitle {
-  max-width: 42rem;
-  margin: 1.35rem 0 0;
+.heroTitle,
+.sectionTitle,
+.sectionTitleLight,
+.ctaTitle {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 10vw, 8.9rem);
   font-weight: 400;
-  letter-spacing: -0.07em;
-  line-height: 0.83;
+  letter-spacing: -0.055em;
+}
+
+.heroTitle {
+  max-width: 51rem;
+  margin: 1.4rem 0 0;
+  font-size: clamp(4rem, 8.2vw, 8.2rem);
+  line-height: 0.88;
 }
 
 .heroTitle em {
@@ -82,38 +127,56 @@
   font-style: italic;
 }
 
+.heroSubheading {
+  margin: 1.6rem 0 0;
+  color: var(--color-gold);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1.2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
 .heroDescription {
-  max-width: 32rem;
-  margin: 2rem 0 0;
-  color: rgba(245, 241, 224, 0.8);
-  font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+  max-width: 35rem;
+  margin-top: 1.8rem;
+  color: rgba(245, 241, 224, 0.82);
+  font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.heroDescription p {
+  margin: 0 0 0.55rem;
 }
 
 .heroActions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 2.7rem;
+  gap: 1rem;
+  margin-top: 2.3rem;
 }
 
-.primaryButton {
+.primaryButton,
+.outlineButton,
+.outlineButtonDark {
   display: inline-flex;
+  min-height: 3.2rem;
   align-items: center;
   justify-content: center;
-  min-height: 3.2rem;
-  padding: 0.8rem 1.35rem;
+  padding: 0.85rem 1.35rem;
   border: 1px solid var(--color-gold);
-  background: var(--color-gold);
-  color: var(--color-forest);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.primaryButton {
+  background: var(--color-gold);
+  color: var(--color-forest);
 }
 
 .primaryButton:hover {
@@ -122,70 +185,74 @@
   transform: translateY(-2px);
 }
 
-.textButton {
+.outlineButton {
   color: var(--color-cream);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: color 180ms ease;
 }
 
-.textButton:hover {
-  color: var(--color-gold);
+.outlineButton:hover {
+  background: var(--color-cream);
+  color: var(--color-forest);
+  transform: translateY(-2px);
 }
 
-.heroFootnote {
+.outlineButtonDark {
+  color: var(--color-forest);
+}
+
+.outlineButtonDark:hover {
+  background: var(--color-forest);
+  color: var(--color-cream);
+  transform: translateY(-2px);
+}
+
+.heroAside {
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-top: 5.5rem;
-  color: rgba(245, 241, 224, 0.55);
+  justify-content: flex-end;
 }
 
-.leafMark {
-  width: 2rem;
-  height: 2rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.25;
-}
-
-.heroBadge {
-  position: absolute;
-  right: 4vw;
-  bottom: 4.5rem;
+.heroAsideCard {
   display: flex;
+  width: 12rem;
+  min-height: 12rem;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 0.3rem;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(196, 165, 90, 0.5);
+  background: rgba(7, 29, 16, 0.36);
+  color: rgba(245, 241, 224, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.heroAsideCard .leafMark {
+  width: 3rem;
+  margin-bottom: auto;
+}
+
+.heroAsideCard strong {
   color: var(--color-cream);
-}
-
-.badgeNumber {
   font-family: var(--font-display);
-  font-size: 4rem;
-  line-height: 0.8;
-}
-
-.badgeLabel {
-  color: var(--color-gold);
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 1.55rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  text-transform: none;
 }
 
 .scrollCue {
   position: absolute;
-  right: 4vw;
-  top: 50%;
-  color: rgba(245, 241, 224, 0.6);
+  right: 2rem;
+  bottom: 2rem;
+  color: rgba(245, 241, 224, 0.7);
+  text-decoration: none;
   writing-mode: vertical-rl;
-  transform: translateY(-50%);
+  transform: rotate(180deg);
+}
+
+.aboutSection,
+.servicesSection,
+.contactSection {
+  position: relative;
+  padding: 8rem 0;
 }
 
 .aboutSection,
@@ -194,402 +261,455 @@
   color: var(--color-forest);
 }
 
-.aboutSection {
-  padding: 8rem 0 7rem;
-}
-
-.aboutGrid,
-.contactGrid,
-.experienceGrid {
-  display: grid;
-  gap: 4rem;
-  grid-template-columns: 1fr;
+.servicesSection {
+  background: var(--color-sand);
+  color: var(--color-forest);
 }
 
 .aboutGrid {
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 7rem;
 }
 
-.sectionTitle {
-  max-width: 38rem;
-  margin: 1.2rem 0 0;
-  color: var(--color-forest);
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5vw, 5.2rem);
-  font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.98;
+.aboutVisual {
+  position: relative;
+  min-height: 34rem;
+  overflow: hidden;
+  background: var(--color-pine);
 }
 
-.aboutCopy {
-  max-width: 39rem;
+.sectionImage {
+  transition: transform 700ms ease;
+}
+
+.aboutVisual:hover .sectionImage {
+  transform: scale(1.035);
+}
+
+.imageStamp {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.2rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(7, 29, 16, 0.8);
+}
+
+.sectionTitle,
+.sectionTitleLight {
+  max-width: 35rem;
+  margin: 1rem 0 0;
+  font-size: clamp(3rem, 5.5vw, 5.6rem);
+  line-height: 0.92;
+}
+
+.aboutCopy > p,
+.sectionIntro p,
+.sectionIntroLight,
+.contactCard p {
   font-size: 1rem;
-  line-height: 1.85;
+  line-height: 1.8;
 }
 
-.aboutCopy p {
-  margin: 0;
+.aboutCopy > p {
+  max-width: 34rem;
+  margin: 1.7rem 0 0;
 }
 
-.aboutCopy p + p {
-  margin-top: 1.4rem;
-  color: rgba(7, 29, 16, 0.66);
-}
-
-.leadCopy {
-  font-size: 1.22rem;
-  line-height: 1.65;
+.aboutCopy .leadCopy {
+  color: var(--color-pine);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  line-height: 1.35;
 }
 
 .aboutSignature {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-top: 2.2rem;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
   color: var(--color-moss);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-style: italic;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.aboutSignature .leafMark {
+.leafMark {
   width: 2.5rem;
   height: 2.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
 }
 
-.destinationStrip {
-  display: grid;
-  gap: 2rem;
-  margin-top: 6.5rem;
-  padding: 2rem 0;
-  border-top: 1px solid rgba(7, 29, 16, 0.2);
-  border-bottom: 1px solid rgba(7, 29, 16, 0.2);
+.anchorTarget {
+  position: absolute;
+  top: -7rem;
 }
 
-.destinationStrip strong {
-  display: block;
-  margin-top: 0.45rem;
-  font-family: var(--font-display);
-  font-size: 1.9rem;
-  font-weight: 400;
-}
-
-.destinationList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.destinationList span {
-  padding: 0.7rem 0.9rem;
-  border: 1px solid rgba(7, 29, 16, 0.2);
-  color: rgba(7, 29, 16, 0.72);
-  font-size: 0.82rem;
-}
-
-.staySection {
-  padding: 8rem 0 7rem;
-  background: var(--color-sand);
-  color: var(--color-forest);
-}
-
-.diningSection {
-  padding: 8rem 0 7rem;
-  background: var(--color-cream);
-  color: var(--color-forest);
-}
-
-.sectionHeadingRow {
-  display: grid;
-  gap: 2rem;
+.sectionHeader {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   align-items: end;
 }
 
 .sectionIntro {
-  max-width: 31rem;
-  margin: 0;
-  color: rgba(7, 29, 16, 0.66);
-  font-size: 1.04rem;
-  line-height: 1.8;
+  max-width: 28rem;
 }
 
-.facilityGrid {
+.sectionIntro p {
+  margin: 0 0 0.85rem;
+}
+
+.serviceGrid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: 4.5rem;
-  background: rgba(7, 29, 16, 0.2);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 4rem;
 }
 
-.facilityCard {
-  min-height: 15rem;
-  padding: 1.8rem;
-  background: var(--color-sand);
-  transition: background 180ms ease, transform 180ms ease;
+.serviceCard {
+  position: relative;
+  min-height: 27rem;
+  overflow: hidden;
+  color: var(--color-cream);
+  background: var(--color-pine);
+  box-shadow: 0 1.5rem 2.5rem rgba(7, 29, 16, 0.12);
 }
 
-.facilityCard:hover {
-  background: var(--color-cream);
-  transform: translateY(-3px);
+.cardImageWrapper,
+.highlightImageWrapper {
+  position: absolute;
+  inset: 0;
 }
 
-.facilityNumber {
-  display: block;
-  color: var(--color-moss);
+.cardImageWrapper {
+  z-index: 0;
+}
+
+.cardImage,
+.highlightImage {
+  transition: transform 700ms ease;
+}
+
+.serviceCard:hover .cardImage,
+.highlightCard:hover .highlightImage {
+  transform: scale(1.06);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 29, 16, 0.92), rgba(7, 29, 16, 0.1) 72%);
+}
+
+.cardHeader {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.cardHeader span,
+.cardReveal > span,
+.highlightContent > span {
+  color: var(--color-gold);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 
-.facilityCard h3 {
-  max-width: 15rem;
-  margin: 3.4rem 0 0.8rem;
+.cardHeader h3,
+.cardReveal h3,
+.highlightContent h3 {
+  margin: 0.55rem 0 0;
   font-family: var(--font-display);
-  font-size: 1.95rem;
+  font-size: 1.8rem;
   font-weight: 400;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
-.facilityCard p {
-  max-width: 19rem;
-  margin: 0;
-  color: rgba(7, 29, 16, 0.65);
-  font-size: 0.9rem;
+.cardReveal {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: rgba(7, 29, 16, 0.9);
+  transform: translateY(100%);
+  transition: transform 350ms ease;
+}
+
+.serviceCard:hover .cardReveal,
+.serviceCard:focus-within .cardReveal {
+  transform: translateY(0);
+}
+
+.cardReveal p {
+  max-width: 25rem;
+  margin: 1.1rem 0 0;
+  color: rgba(245, 241, 224, 0.78);
+  font-size: 0.95rem;
   line-height: 1.7;
 }
 
-.benefitRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1.6rem;
-  align-items: center;
-  margin-top: 3rem;
-  color: rgba(7, 29, 16, 0.7);
-  font-size: 0.88rem;
-}
-
-.benefitRow span:not(.benefitIntro) {
-  padding-left: 1rem;
-  border-left: 1px solid rgba(7, 29, 16, 0.25);
-}
-
-.experienceSection {
-  min-height: 43rem;
-  display: flex;
-  align-items: center;
+.projectsSection {
   padding: 8rem 0;
 }
 
-.experienceImage {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background-image: url("/images/season7-forest-logo.webp");
-  background-size: cover;
-  background-position: center 58%;
-  filter: saturate(0.85);
-}
-
-.experienceShade {
-  background:
-    linear-gradient(90deg, rgba(3, 13, 7, 0.94) 0%, rgba(3, 13, 7, 0.75) 53%, rgba(3, 13, 7, 0.38) 100%),
-    linear-gradient(0deg, rgba(3, 13, 7, 0.55), transparent 65%);
-}
-
-.experienceGrid {
-  align-items: center;
-}
-
-.sectionLabelLight {
-  color: var(--color-gold);
-}
-
-.experienceTitle {
-  max-width: 35rem;
-  margin: 1.1rem 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(3.2rem, 6vw, 6rem);
-  font-weight: 400;
-  letter-spacing: -0.06em;
-  line-height: 0.9;
-}
-
-.experienceCopy {
-  max-width: 29rem;
-  margin: 2rem 0 0;
-  color: rgba(245, 241, 224, 0.72);
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.experienceList {
-  border-top: 1px solid rgba(245, 241, 224, 0.28);
-}
-
-.experienceItem {
-  display: flex;
-  gap: 1rem;
-  align-items: baseline;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid rgba(245, 241, 224, 0.28);
-}
-
-.experienceItem span {
-  min-width: 1.5rem;
-  color: var(--color-gold);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-}
-
-.experienceItem strong {
-  font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 400;
-}
-
-.contactSection {
-  padding: 8rem 0;
-}
-
-.contactGrid {
-  align-items: end;
-}
-
-.contactCopy {
-  max-width: 29rem;
-  margin: 1.7rem 0 2rem;
-  color: rgba(7, 29, 16, 0.68);
-  font-size: 1.04rem;
-  line-height: 1.8;
-}
-
-.addressCard {
-  min-height: 19rem;
-  padding: 2rem;
-  background: var(--color-forest);
+.sectionLabelLight,
+.sectionTitleLight,
+.sectionIntroLight {
   color: var(--color-cream);
 }
 
-.addressIcon {
+.sectionIntroLight {
+  max-width: 28rem;
+  margin: 0;
+  opacity: 0.72;
+}
+
+.highlightGrid {
   display: grid;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 3.5rem;
-  place-items: center;
-  border: 1px solid rgba(196, 165, 90, 0.55);
-  color: var(--color-gold);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 4rem;
+}
+
+.highlightCard {
+  position: relative;
+  min-height: 25rem;
+  overflow: hidden;
+  background: var(--color-pine);
+}
+
+.highlightImageWrapper {
+  z-index: 0;
+}
+
+.highlightImageWrapper::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 29, 16, 0.96), rgba(7, 29, 16, 0.05) 75%);
+  content: "";
+}
+
+.highlightContent {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.highlightContent p {
+  max-width: 24rem;
+  margin: 0.9rem 0 0;
+  color: rgba(245, 241, 224, 0.72);
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.ctaSection {
+  padding: 5.5rem 0;
+  background: var(--color-gold);
+  color: var(--color-forest);
+}
+
+.ctaInner {
+  grid-template-columns: minmax(0, 1.2fr) auto;
+  align-items: end;
+}
+
+.ctaTitle {
+  max-width: 48rem;
+  margin: 1rem 0 0;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 0.94;
+}
+
+.contactGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 4rem;
+}
+
+.contactCard {
+  min-height: 12rem;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(7, 29, 16, 0.25);
+}
+
+.contactCard strong,
+.contactCard address {
+  display: block;
+  margin-top: 1.1rem;
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.contactCard p {
+  max-width: 19rem;
+  margin: 1rem 0 0;
+  color: rgba(7, 29, 16, 0.68);
+}
+
+.mapPanel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 3rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid rgba(7, 29, 16, 0.22);
+  background: var(--color-sand);
+}
+
+.mapPanel .pinIcon {
+  flex: 0 0 auto;
+}
+
+.mapPanel strong {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+.mapLink {
+  margin-left: auto;
+  color: var(--color-forest);
+  text-decoration: none;
+}
+
+.mapLink:hover {
+  color: var(--color-moss);
 }
 
 .pinIcon {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.6rem;
+  height: 1.6rem;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.3;
 }
 
-.addressCard .stripLabel {
-  display: block;
-}
-
-.addressCard address {
-  display: block;
-  max-width: 22rem;
-  margin-top: 0.9rem;
-  color: var(--color-cream);
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-style: normal;
-  line-height: 1.1;
-}
-
-.addressNote {
-  display: block;
-  margin-top: 1.5rem;
-  color: rgba(245, 241, 224, 0.56);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-@media (min-width: 640px) {
-  .facilityGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .destinationStrip {
-    grid-template-columns: 1fr 1.5fr;
-    align-items: center;
-  }
-}
-
-@media (min-width: 900px) {
+@media (max-width: 900px) {
+  .heroGrid,
   .aboutGrid,
+  .sectionHeader,
   .contactGrid,
-  .experienceGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 7rem;
+  .ctaInner {
+    grid-template-columns: 1fr;
   }
 
-  .sectionHeadingRow {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
-
-  .facilityGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 700px) {
-  .hero {
-    background-position: 58% 42%;
-  }
-
-  .heroContent {
-    padding-top: 9rem;
-  }
-
-  .heroBadge,
-  .scrollCue {
-    display: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .heroTitle {
-    font-size: clamp(4rem, 20vw, 6rem);
-  }
-
-  .heroActions {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .heroFootnote {
-    margin-top: 4rem;
-  }
-
-  .aboutSection,
-  .staySection,
-  .diningSection,
-  .contactSection,
-  .experienceSection {
-    padding: 6rem 0;
-  }
-
-  .destinationStrip {
-    margin-top: 4.5rem;
-  }
-
-  .facilityCard {
+  .heroGrid {
     min-height: auto;
   }
 
-  .facilityCard h3 {
-    margin-top: 2.5rem;
+  .heroAside {
+    display: none;
+  }
+
+  .aboutGrid {
+    gap: 3.5rem;
+  }
+
+  .serviceGrid,
+  .highlightGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ctaInner {
+    align-items: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroContent {
+    padding: 9rem 0 6rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(3.7rem, 18vw, 5.6rem);
+  }
+
+  .heroSubheading {
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+
+  .heroActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .outlineButton,
+  .outlineButtonDark {
+    width: fit-content;
+  }
+
+  .scrollCue {
+    display: none;
+  }
+
+  .aboutSection,
+  .servicesSection,
+  .projectsSection,
+  .contactSection {
+    padding: 6rem 0;
+  }
+
+  .aboutVisual {
+    min-height: 25rem;
+  }
+
+  .sectionTitle,
+  .sectionTitleLight {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+  }
+
+  .serviceGrid,
+  .highlightGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard,
+  .highlightCard {
+    min-height: 25rem;
+  }
+
+  .cardReveal {
+    transform: translateY(0);
+    background: linear-gradient(0deg, rgba(7, 29, 16, 0.96), rgba(7, 29, 16, 0.1) 100%);
+  }
+
+  .cardHeader {
+    opacity: 0;
+  }
+
+  .ctaSection {
+    padding: 4.5rem 0;
+  }
+
+  .mapPanel {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .mapLink {
+    width: 100%;
+    margin-left: 2.85rem;
   }
 }

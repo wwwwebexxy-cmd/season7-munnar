@@ -2,11 +2,11 @@ import { NavLink } from "@/types";
 
 export const site = {
   name: "SEASON7",
-  legalName: "Season7 The Nature Resort",
-  shortName: "Season7 Resort",
+  legalName: "Season7 Natural Resort Munnar (Amrutha Resort)",
+  shortName: "Season7 Natural Resort",
   tagline: "A quiet stay among Munnar's green hills",
   description:
-    "Season7 The Nature Resort is a comfortable nature retreat in Munnar, Kerala, with cozy cottages, thoughtful hospitality, local dining and outdoor experiences.",
+    "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://season7-the-nature-resort.www-webexxy.chatgpt.site",
   address: "Eatty City Road, Chithirapuram, PO, Anachal, Munnar, Kerala 685565, India",
   mapsLink:
@@ -15,10 +15,7 @@ export const site = {
 
 export const navLinks: NavLink[] = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Accommodation", href: "#accommodation" },
-  { label: "Dining", href: "#dining" },
-  { label: "Facilities", href: "#facilities" },
-  { label: "Activities", href: "#activities" },
+  { label: "About Us", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Contact", href: "#contact" },
 ];
