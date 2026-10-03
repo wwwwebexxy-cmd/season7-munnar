@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
@@ -36,9 +37,9 @@ export default function Projects() {
   // Calculate max index depending on visible cards
   const maxIndex = Math.max(0, totalSlides - cardsToShow);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  };
+  }, [maxIndex]);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
@@ -55,7 +56,7 @@ export default function Projects() {
       nextSlide();
     }, 4000);
     return () => clearInterval(interval);
-  }, [isHovered, cardsToShow]); // Re-run if cardsToShow changes to use updated maxIndex
+  }, [isHovered, nextSlide]);
 
   return (
     <section id="projects" className={styles.section}>
@@ -150,7 +151,14 @@ export default function Projects() {
             <button className={styles.closeButton} onClick={() => setSelectedImage(null)} aria-label="Close image">
               &times;
             </button>
-            <img src={selectedImage} alt="Project view" className={styles.modalImage} />
+            <Image
+              src={selectedImage}
+              alt="Project view"
+              className={styles.modalImage}
+              width={1200}
+              height={800}
+              unoptimized
+            />
           </div>
         </div>
       )}

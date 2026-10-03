@@ -3,7 +3,7 @@ import Reveal from "@/components/ui/Reveal";
 import { site } from "@/data/site";
 import styles from "./ResortExperience.module.css";
 
-const facilities = [
+const accommodation = [
   {
     number: "01",
     title: "A/C & non A/C cottages",
@@ -11,26 +11,37 @@ const facilities = [
   },
   {
     number: "02",
+    title: "Private balconies & en suite bathrooms",
+    body: "Wake up to green views and enjoy the comfort of a private, unhurried space designed for restful stays.",
+  },
+];
+
+const dining = [
+  {
+    number: "01",
     title: "Multi-cuisine restaurant",
     body: "Freshly prepared meals inspired by local ingredients, traditional Kerala recipes, and familiar international flavours.",
   },
   {
-    number: "03",
+    number: "02",
     title: "Cool bar",
     body: "Refresh with mocktails, light bites, and an easy evening pause after a day exploring the hills.",
   },
+];
+
+const facilities = [
   {
-    number: "04",
+    number: "01",
     title: "Swimming pool",
     body: "A serene place to slow down, spend time together, and take in the landscape around you.",
   },
   {
-    number: "05",
+    number: "02",
     title: "Spa & wellness",
     body: "Thoughtful therapies and treatments to help you reset, recharge, and settle into the pace of nature.",
   },
   {
-    number: "06",
+    number: "03",
     title: "Family-friendly spaces",
     body: "A kids play area, board games, and indoor fun for relaxed time together between adventures.",
   },
@@ -92,7 +103,7 @@ export default function ResortExperience() {
 
               <Reveal delay={600}>
                 <div className={styles.heroActions}>
-                  <a href="#stay" className={styles.primaryButton}>Explore the resort</a>
+                  <a href="#accommodation" className={styles.primaryButton}>Explore the resort</a>
                   <a href="#contact" className={styles.textButton}>Find us in Munnar</a>
                 </div>
               </Reveal>
@@ -154,16 +165,73 @@ export default function ResortExperience() {
         </Container>
       </section>
 
-      <section id="stay" className={styles.staySection}>
+      <section id="accommodation" className={styles.staySection}>
         <Container>
           <div className={styles.sectionHeadingRow}>
             <Reveal>
-              <div className={styles.sectionLabel}>02 / Stay well</div>
+              <div className={styles.sectionLabel}>02 / Accommodation</div>
+              <h2 className={styles.sectionTitle}>Stay close to the hills.</h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className={styles.sectionIntro}>
+                Settle into comfortable cottages with the space, privacy, and gentle views that make a Munnar stay feel restorative.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className={styles.facilityGrid}>
+            {accommodation.map((facility, index) => (
+              <Reveal key={facility.number} delay={(index % 3) * 90}>
+                <article className={styles.facilityCard}>
+                  <span className={styles.facilityNumber}>{facility.number}</span>
+                  <h3>{facility.title}</h3>
+                  <p>{facility.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+        </Container>
+      </section>
+
+      <section id="dining" className={styles.diningSection}>
+        <Container>
+          <div className={styles.sectionHeadingRow}>
+            <Reveal>
+              <div className={styles.sectionLabel}>03 / Dining & refreshments</div>
+              <h2 className={styles.sectionTitle}>Good food, easy evenings.</h2>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className={styles.sectionIntro}>
+                Share a generous meal, try the flavours of Kerala, or take a relaxed pause at the cool bar after a day outdoors.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className={styles.facilityGrid}>
+            {dining.map((facility, index) => (
+              <Reveal key={facility.number} delay={(index % 3) * 90}>
+                <article className={styles.facilityCard}>
+                  <span className={styles.facilityNumber}>{facility.number}</span>
+                  <h3>{facility.title}</h3>
+                  <p>{facility.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="facilities" className={styles.staySection}>
+        <Container>
+          <div className={styles.sectionHeadingRow}>
+            <Reveal>
+              <div className={styles.sectionLabel}>04 / Facilities</div>
               <h2 className={styles.sectionTitle}>Everything you need to settle in.</h2>
             </Reveal>
             <Reveal delay={160}>
               <p className={styles.sectionIntro}>
-                From a quiet morning on the balcony to a long evening by the fire, our facilities are made for a complete holiday experience.
+                From a quiet morning by the pool to a long evening by the fire, thoughtful facilities make space for a complete holiday experience.
               </p>
             </Reveal>
           </div>
@@ -191,13 +259,13 @@ export default function ResortExperience() {
         </Container>
       </section>
 
-      <section id="experiences" className={styles.experienceSection}>
+      <section id="activities" className={styles.experienceSection}>
         <div className={styles.experienceImage} />
         <div className={styles.experienceShade} />
         <Container>
           <div className={styles.experienceGrid}>
             <Reveal>
-              <div className={styles.sectionLabelLight}>03 / Go gently wild</div>
+              <div className={styles.sectionLabelLight}>05 / Go gently wild</div>
               <h2 className={styles.experienceTitle}>Make the day your own.</h2>
               <p className={styles.experienceCopy}>
                 Take the scenic route, swap stories around a campfire, or simply let the hills set the pace. At Season7, adventure is always close and never compulsory.
@@ -222,7 +290,7 @@ export default function ResortExperience() {
         <Container>
           <div className={styles.contactGrid}>
             <Reveal>
-              <div className={styles.sectionLabel}>04 / Find your way here</div>
+              <div className={styles.sectionLabel}>06 / Find your way here</div>
               <h2 className={styles.sectionTitle}>Plan your escape to Season7.</h2>
               <p className={styles.contactCopy}>
                 Come for the quiet, stay for the view, and leave with a little more room to breathe.

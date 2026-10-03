@@ -24,11 +24,13 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: site.legalName,
-    template: `%s | ${site.shortName}`,
+  title: "SEASON7 THE NATURE RESORT | Munnar",
+  description:
+    "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
+  metadataBase: new URL(site.url),
+  alternates: {
+    canonical: "/",
   },
-  description: site.description,
   keywords: [
     "Season7 The Nature Resort",
     "Munnar resort",
@@ -45,11 +47,19 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: site.legalName,
-    description: site.description,
+    title: "SEASON7 THE NATURE RESORT | Munnar",
+    description:
+      "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
+    url: site.url,
     siteName: site.shortName,
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SEASON7 THE NATURE RESORT | Munnar",
+    description:
+      "A nature resort experience in Munnar surrounded by forested hills, peaceful landscapes and comfortable accommodation.",
   },
   robots: {
     index: true,

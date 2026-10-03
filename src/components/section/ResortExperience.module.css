@@ -294,6 +294,12 @@
   color: var(--color-forest);
 }
 
+.diningSection {
+  padding: 8rem 0 7rem;
+  background: var(--color-cream);
+  color: var(--color-forest);
+}
+
 .sectionHeadingRow {
   display: grid;
   gap: 2rem;
@@ -569,6 +575,7 @@
 
   .aboutSection,
   .staySection,
+  .diningSection,
   .contactSection,
   .experienceSection {
     padding: 6rem 0;

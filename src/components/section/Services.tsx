@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import SectionTitle from "@/components/ui/SectionTitle";
 import Reveal from "@/components/ui/Reveal";
+import Image from "next/image";
 import { services } from "@/data/services";
 import styles from "./Services.module.css";
 
@@ -28,7 +29,14 @@ export default function Services() {
               <div className={styles.serviceCard}>
                 {service.image && (
                   <div className={styles.cardImageWrapper}>
-                    <img src={service.image} alt={service.title} className={styles.cardImage} />
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      className={styles.cardImage}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      unoptimized
+                    />
                     <div className={styles.imageOverlay}></div>
                   </div>
                 )}
