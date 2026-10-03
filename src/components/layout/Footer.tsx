@@ -10,10 +10,6 @@ export default function Footer() {
         <div className={styles.topRow}>
           <a href="#home" className={styles.brand}>
             <Image src="/images/season7-forest-logo.webp" alt="Season7 Natural Resort Munnar" width={48} height={48} />
-            <span>
-              <strong>SEASON7</strong>
-              <small>AMRUTHA RESORT</small>
-            </span>
           </a>
 
           <nav className={styles.footerNav} aria-label="Footer navigation">

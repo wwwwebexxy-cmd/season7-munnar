@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { navLinks, site } from "@/data/site";
+import { navLinks } from "@/data/site";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -39,10 +39,6 @@ export default function Navbar() {
         <div className={styles.inner}>
           <a href="#home" onClick={() => setOpen(false)} className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
             <Image src="/images/season7-forest-logo.webp" alt="" className={styles.logoImg} width={80} height={63} priority />
-            <div className={styles.logoText}>
-              <span>{site.name}</span>
-              <small>AMRUTHA RESORT</small>
-            </div>
           </a>
 
           <nav className={styles.nav} aria-label="Main navigation">
