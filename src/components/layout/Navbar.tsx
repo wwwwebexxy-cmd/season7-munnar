@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { navLinks } from "@/data/site";
 import styles from "./Navbar.module.css";
 
@@ -37,19 +38,19 @@ export default function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""} ${open ? styles.headerOpen : ""}`}>
         <div className={styles.inner}>
-          <a href="#home" onClick={() => setOpen(false)} className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
+          <Link href="/" onClick={() => setOpen(false)} className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
             <Image src="/images/season7-forest-logo.webp" alt="" className={styles.logoImg} width={80} height={63} priority />
-          </a>
+          </Link>
 
           <nav className={styles.nav} aria-label="Main navigation">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={styles.link}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -71,14 +72,14 @@ export default function Navbar() {
           <div id="mobile-navigation" className={styles.mobileMenu} inert={!open} aria-hidden={!open}>
             <nav className={styles.mobileNav} aria-label="Mobile navigation">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={styles.mobileLink}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
 
             </nav>

@@ -64,6 +64,31 @@
   margin: 0;
 }
 
+.copyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(245, 241, 224, 0.7);
+  transition: color 220ms ease;
+}
+
+.socialLinks a:hover {
+  color: var(--color-gold);
+}
+
 @media (min-width: 760px) {
   .topRow {
     flex-direction: row;
@@ -74,5 +99,10 @@
   .bottomRow {
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .socialLinks {
+    margin-top: 0;
   }
 }

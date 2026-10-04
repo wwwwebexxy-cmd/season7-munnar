@@ -24,43 +24,53 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const resortName = "SEASON7 THE NATURE RESORT";
+const pageTitle = `${resortName} | Munnar, Kerala`;
+const pageDescription =
+  "Find your quiet escape at Season7 The Nature Resort in Chithirapuram, Munnar. Discover cottages with private balconies, dining, a swimming pool and spa.";
+const socialImage = {
+  url: "/images/season7-munnar-hero.png",
+  width: 1672,
+  height: 941,
+  alt: "A nature retreat overlooking misty green hills in Munnar",
+};
+
 export const metadata: Metadata = {
-  title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
-  description:
-    "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
+  title: pageTitle,
+  description: pageDescription,
   metadataBase: new URL(site.url),
   alternates: {
     canonical: "/",
   },
   keywords: [
-    "Season7 Natural Resort Munnar",
-    "Munnar resort",
-    "Munnar cottages",
-    "Chithirapuram resort",
-    "Kerala nature stay",
+    "Season7 The Nature Resort",
+    "Nature resort in Munnar",
+    "Resort in Chithirapuram",
+    "Munnar Kerala resort",
+    "Nature stay in Munnar",
   ],
-  authors: [{ name: site.legalName }],
-  creator: site.legalName,
-  publisher: site.legalName,
+  authors: [{ name: resortName }],
+  creator: resortName,
+  publisher: resortName,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
-    description:
-      "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
+    title: pageTitle,
+    description: pageDescription,
     url: site.url,
-    siteName: site.shortName,
+    siteName: resortName,
     locale: "en_IN",
     type: "website",
+    images: [socialImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SEASON7 NATURAL RESORT MUNNAR | Amrutha Resort",
-    description:
-      "Season7 Natural Resort Munnar is a premium nature retreat with comfortable rooms, warm hospitality, local dining and restorative experiences in Kerala's highlands.",
+    title: pageTitle,
+    description: pageDescription,
+    images: [socialImage],
   },
   robots: {
     index: true,
@@ -69,9 +79,7 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-KL",
     "geo.placename": "Munnar",
-    "geo.position": "10.0210;77.0371",
-    "ICBM": "10.0210, 77.0371",
-  }
+  },
 };
 
 export default function RootLayout({
@@ -80,8 +88,12 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Resort",
-    name: site.legalName,
-    description: site.description,
+    "@id": `${site.url}/#resort`,
+    name: resortName,
+    description: pageDescription,
+    url: site.url,
+    image: new URL(socialImage.url, site.url).toString(),
+    hasMap: site.mapsLink,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Eatty City Road, Chithirapuram, PO, Anachal",
@@ -99,7 +111,7 @@ export default function RootLayout({
         <WhatsAppFloat />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         {children}
         <ScrollToTop />

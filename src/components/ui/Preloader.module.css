@@ -22,6 +22,8 @@
 
 .logo {
   object-fit: contain;
+  mix-blend-mode: screen;
+  filter: brightness(1.1);
 }
 
 @keyframes pulse {
