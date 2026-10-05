@@ -39,7 +39,14 @@ export default function Navbar() {
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ""} ${open ? styles.headerOpen : ""}`}>
         <div className={styles.inner}>
           <Link href="/" onClick={() => setOpen(false)} className={styles.logo} aria-label="Season7 Natural Resort Munnar home">
-            <Image src="/images/season7-forest-logo.webp" alt="" className={styles.logoImg} width={80} height={63} priority />
+            <Image
+              src="/images/season7-forest-logo-transparent-v3.png"
+              alt="Season7 The Nature Resort logo"
+              className={styles.logoImg}
+              width={220}
+              height={90}
+              priority
+            />
           </Link>
 
           <nav className={styles.nav} aria-label="Main navigation">

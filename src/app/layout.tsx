@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import Preloader from "@/components/ui/Preloader";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  weight: ["400", "500", "600"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  weight: ["400", "500", "600", "700"],
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  variable: "--font-plex-mono",
-  weight: ["400", "500"],
-});
 
 const resortName = "SEASON7 THE NATURE RESORT";
 const pageTitle = `${resortName} | Munnar, Kerala`;
@@ -105,7 +86,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable} ${plexMono.variable}`}>
+    <html lang="en">
       <body>
         <Preloader />
         <WhatsAppFloat />

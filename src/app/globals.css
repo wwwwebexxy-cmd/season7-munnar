@@ -6,9 +6,10 @@
   --color-gold: #c4a55a;
   --color-sand: #e6e1cf;
   --color-cream: #f5f1e0;
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-body: var(--font-manrope), Arial, sans-serif;
-  --font-mono: var(--font-plex-mono), "Courier New", monospace;
+  /* Keep fonts self-contained so static builds do not depend on Google Fonts or Turbopack's font loader. */
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-body: "Segoe UI", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 *,

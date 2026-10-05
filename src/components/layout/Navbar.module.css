@@ -33,6 +33,9 @@
 .logo {
   display: inline-flex;
   align-items: center;
+  width: 10.75rem;
+  height: 4.85rem;
+  overflow: hidden;
   min-width: 0;
   gap: 0.65rem;
   color: var(--color-cream);
@@ -40,10 +43,11 @@
 }
 
 .logoImg {
-  width: auto;
-  height: 3.5rem;
+  width: 10.75rem;
+  height: 4.85rem;
   border-radius: 0;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
 }
 
 .nav {
@@ -149,6 +153,12 @@
   }
 
   .logoImg {
-    height: 3rem;
+    width: 8.5rem;
+    height: 3.85rem;
+  }
+
+  .logo {
+    width: 8.5rem;
+    height: 3.85rem;
   }
 }

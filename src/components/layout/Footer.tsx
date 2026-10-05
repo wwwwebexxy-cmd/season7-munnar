@@ -10,7 +10,13 @@ export default function Footer() {
       <Container>
         <div className={styles.topRow}>
           <Link href="/" className={styles.brand}>
-            <Image src="/images/season7-forest-logo.webp" alt="Season7 Natural Resort Munnar" width={48} height={48} />
+            <Image
+              src="/images/season7-forest-logo-transparent-v3.png"
+              alt="Season7 Natural Resort Munnar"
+              className={styles.brandLogo}
+              width={240}
+              height={95}
+            />
           </Link>
 
           <nav className={styles.footerNav} aria-label="Footer navigation">
